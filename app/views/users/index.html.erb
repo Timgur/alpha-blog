@@ -1,0 +1,15 @@
+<h1>Alpha Bloggers</h1>
+<div>
+  <% @users.each do |user| %>
+    <p>
+      <%= link_to user.username, user %>
+      <div><%= link_to gravatar_for(user, size: 150), user %></div>
+      <div><%= pluralize(user.articles.count, "article") %></div>
+      <div>
+        <%= link_to 'View Profile',  user_path(user)  %>
+        <%= link_to 'Edit Profile',  edit_user_path(user)  %>
+      </div>
+      <small>Joined <%= time_ago_in_words(user.created_at) %> ago</small>
+    </p>
+  <% end %>
+</div>
